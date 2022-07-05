@@ -9,7 +9,7 @@ class Solution:
             return r in [-1, ROWS] or c in [-1, COLS]
         
         def dfs(r, c):
-            if out_of_bounds(r, c) or (r, c) in visit or grid[r][c] == "0":
+            if r in [-1, ROWS] or c in [-1, COLS] or (r, c) in visit or grid[r][c] == "0":
                 return
             visit.add((r, c))
             for dr, dc in directions:
