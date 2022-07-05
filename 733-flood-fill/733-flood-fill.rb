@@ -20,7 +20,6 @@ def dfs(image, r, c, old_color, new_color, visit)
 end
 
 def flood_fill(image, sr, sc, color)
-    visit = Set.new
-    dfs(image, sr, sc, image[sr][sc], color, visit)
+    dfs(image, sr, sc, image[sr][sc], color, Set.new)
     image
 end
