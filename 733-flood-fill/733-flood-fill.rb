@@ -6,8 +6,7 @@
 def out_of_bounds(image, r, c)
     row_bounds = [-1, image.length]
     col_bounds = [-1, image[0].length]
-    return true if row_bounds.include?(r) || col_bounds.include?(c)
-    false
+    row_bounds.include?(r) || col_bounds.include?(c)
 end
 
 def dfs(image, r, c, old_color, new_color, visit)
