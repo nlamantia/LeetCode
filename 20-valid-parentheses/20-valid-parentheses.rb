@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # @param {String} s
 # @return {Boolean}
 def is_valid(s)
@@ -8,8 +10,7 @@ def is_valid(s)
         ']' => '['
     }
     
-    (0...s.length).each do |i|
-        c = s[i]
+    s.split('').each do |c|
         if closing_brackets.key?(c) && !stack.empty? && closing_brackets[c] == stack[0]
             stack.shift
         else
