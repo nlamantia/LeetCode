@@ -9,14 +9,13 @@ class Solution:
             return r < 0 or c < 0 or r == ROWS or c == COLS
         
         def dfs(r, c):
-            if out_of_bounds(r, c) or (r, c) in visit:
+            if out_of_bounds(r, c) or (r, c) in visit or image[r][c] != original_color:
                 return
             
             visit.add((r, c))
-            if image[r][c] == original_color:
-                image[r][c] = color
-                for dr, dc in directions:
-                    dfs(r + dr, c + dc)
+            image[r][c] = color
+            for dr, dc in directions:
+                dfs(r + dr, c + dc)
                 
         dfs(sr, sc)
         return image
