@@ -5,9 +5,6 @@ class Solution:
         visit = set()
         count = 0
         
-        def out_of_bounds(r, c):
-            return r in [-1, ROWS] or c in [-1, COLS]
-        
         def dfs(r, c):
             if r in [-1, ROWS] or c in [-1, COLS] or (r, c) in visit or grid[r][c] == "0":
                 return
