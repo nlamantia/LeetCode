@@ -10,7 +10,7 @@ class Solution:
         def onPerimeter(r, c):
             return r in [0, ROWS - 1] or c in [0, COLS - 1]
         
-        def dfs(r, c, cellOperation = None):
+        def dfs(r, c):
             if outOfBounds(r, c) or (r, c) in visit or grid[r][c]:
                 return
             visit.add((r, c))
