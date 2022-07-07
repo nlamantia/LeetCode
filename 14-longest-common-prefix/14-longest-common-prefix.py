@@ -4,7 +4,6 @@ class TrieNode:
         self.children = {}
         self.endOfWord = endOfWord
 
-
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         root = TrieNode()
