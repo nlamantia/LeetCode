@@ -4,13 +4,6 @@ class Solution:
         directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
         memo = [[-1] * N for i in range(N)]
         
-        # memo = []
-        # for r in range(N):
-        #     row = []
-        #     for c in range(N):
-        #         row.append(-1)
-        #     memo.append(row)
-        
         def outOfBounds(r, c):
             return r in [-1, N] or c in [-1, N]
         
