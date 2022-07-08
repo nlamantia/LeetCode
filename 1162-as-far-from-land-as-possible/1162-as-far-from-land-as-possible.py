@@ -2,13 +2,14 @@ class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
         N = len(grid)
         directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+        memo = [[-1] * N for i in range(N)]
         
-        memo = []
-        for r in range(N):
-            row = []
-            for c in range(N):
-                row.append(-1)
-            memo.append(row)
+        # memo = []
+        # for r in range(N):
+        #     row = []
+        #     for c in range(N):
+        #         row.append(-1)
+        #     memo.append(row)
         
         def outOfBounds(r, c):
             return r in [-1, N] or c in [-1, N]
@@ -26,7 +27,6 @@ class Solution:
             for i in range(len(q)):
                 r, c = q.popleft()
                 memo[r][c] = level
-                # print((r, c), " - ", str(memo))
                 for dr, dc in directions:
                     newR, newC = r + dr, c + dc
                     if not outOfBounds(newR, newC) and (newR, newC) not in visit and not grid[newR][newC]:
@@ -38,7 +38,6 @@ class Solution:
         maxDistance = -1
         for r in range(N):
             for c in range(N):
-                # print("Memo: ", (r, c), str(memo[r][c]))
                 if memo[r][c] > maxDistance:
                     maxDistance = memo[r][c]
                     
