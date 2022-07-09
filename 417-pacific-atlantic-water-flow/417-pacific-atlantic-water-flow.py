@@ -16,7 +16,6 @@ class Solution:
         def dfs(r, c, prev, res):
             if inOcean(r, c) or (r, c) in res or heights[r][c] < prev:
                 return 
-            print("Atlantic" if res == atlantic else "Pacific", (r, c))
             res.add((r, c))
             for dr, dc in directions:
                 dfs(r + dr, c + dc, heights[r][c], res)
