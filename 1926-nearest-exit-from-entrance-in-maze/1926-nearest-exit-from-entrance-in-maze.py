@@ -12,7 +12,6 @@ class Solution:
         q = deque([(entrance[0], entrance[1], 0)])
         visit = set([(entrance[0], entrance[1])])
         while q:
-            # print(str(q))
             r, c, dist = q.popleft()
             if isExit(r, c) and [r, c] != entrance:
                 return dist
