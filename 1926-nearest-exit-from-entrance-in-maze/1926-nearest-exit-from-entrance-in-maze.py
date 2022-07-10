@@ -10,7 +10,7 @@ class Solution:
             return (r in [0, ROWS - 1] or c in [0, COLS - 1]) and maze[r][c] == "."
         
         q = deque([(entrance[0], entrance[1], 0)])
-        visit = set([(entrance[0], entrance[1])]) 
+        visit = set([(entrance[0], entrance[1])])
         while q:
             r, c, dist = q.popleft()
             if isExit(r, c) and [r, c] != entrance:
