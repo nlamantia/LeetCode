@@ -36,7 +36,6 @@ class Solution:
                     visit.add((newR, newC))
             
         while q:
-            print(str(q))
             for i in range(len(q)):
                 r, c, dist = q.popleft()
                 if grid[r][c]:
