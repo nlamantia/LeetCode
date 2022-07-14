@@ -15,7 +15,6 @@ class Solution:
         q = deque([(0, 0, RED), (0, 0, BLUE)])
         while q:
             node, dist, color = q.popleft()
-            print((node, dist, color))
             if answer[node] == -1:
                 answer[node] = dist
             else:
