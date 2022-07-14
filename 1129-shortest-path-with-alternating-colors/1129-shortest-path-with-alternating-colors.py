@@ -28,6 +28,3 @@ class Solution:
                     visit.add(neighbor)
                 
         return answer
-    
-    # red: 0->[], 1->[4], 2->[4], 3->[2], 4->[1]
-    # blue: 0->[4], 1->[0], 2->[3], 3->[], 4->[0, 3, 4]
