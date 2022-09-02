@@ -12,8 +12,6 @@ class Solution {
             minHeap.add(nums[i] - 1);
         }
         
-        System.out.println(minHeap.toString());
-        
         return product(minHeap);
     }
     
