@@ -2,14 +2,19 @@ class Solution {
     public int minimumDeleteSum(String s1, String s2) {
         int[][] memo = new int[s1.length() + 1][s2.length() + 1];
         
+        // populate the first row of the memo (case for any
+        // substring of s2 compared to the empty string)
         for (int col = 0; col < s2.length(); col++) {
             memo[0][col + 1] = memo[0][col] + (int) s2.charAt(col);
         }
         
+        // populate the first column of the memo (case for any
+        // substring of s1 compared to the empty string)
         for (int row = 0; row < s1.length(); row++) {
             memo[row + 1][0] = memo[row][0] + (int) s1.charAt(row);
         }
         
+        // fill in the matrix
         for (int i = 1; i <= s1.length(); i++) {
             for (int j = 1; j <= s2.length(); j++) {
                 if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
