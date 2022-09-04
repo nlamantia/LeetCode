@@ -19,7 +19,6 @@ class Solution {
         List<Double> levelCounts = new ArrayList<>();
         
         preorderTraversal(root, 0, levelSums, levelCounts);
-        System.out.println(levelSums.toString());
         
         List<Double> averages = new ArrayList<>();
         for (int i = 0; i < levelSums.size(); i++) {
