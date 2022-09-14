@@ -15,32 +15,20 @@
  */
 class Solution {
     public List<Double> averageOfLevels(TreeNode root) {
-        List<Double> levelSums = new ArrayList<>();
-        List<Double> levelCounts = new ArrayList<>();
-        
-        preorderTraversal(root, 0, levelSums, levelCounts);
-        
         List<Double> averages = new ArrayList<>();
-        for (int i = 0; i < levelSums.size(); i++) {
-            averages.add(levelSums.get(i) / levelCounts.get(i));
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int qSize = q.size();
+            double sum = 0.0;
+            for (int i = 0; i < qSize; i++) {
+                TreeNode node = q.poll();
+                sum += node.val;
+                if (node.left != null) q.offer(node.left);
+                if (node.right != null) q.offer(node.right);
+            }
+            averages.add(sum / qSize);
         }
         return averages;
-    }
-    
-    private void preorderTraversal(TreeNode root, int depth, List<Double> sums, List<Double> counts) {
-        if (depth >= sums.size()) {
-            sums.add(depth, 0.0);
-            counts.add(depth, 0.0);
-        }
-        counts.set(depth, counts.get(depth) + 1);
-        sums.set(depth, sums.get(depth) + root.val);
-        
-        if (root.left != null) {
-            preorderTraversal(root.left, depth + 1, sums, counts);
-        }
-        
-        if (root.right != null) {
-            preorderTraversal(root.right, depth + 1, sums, counts);
-        }
     }
 }
