@@ -22,9 +22,6 @@ class Solution {
     }
     
     private boolean isInRightHalf(int[] nums, int middle, int high, int target) {
-        // mid < high, mid < target, target < high
-        // mid > high, target < high
-        // mid > high, target > mid
         return (nums[middle] > nums[high] && (target > nums[middle] || target <= nums[high]))
             || (nums[middle] < nums[high] && nums[middle] < target && target <= nums[high]);
     }
