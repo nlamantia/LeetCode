@@ -1,15 +1,20 @@
 class Solution {
     public int rob(int[] nums) {
-        int[] money = new int[nums.length];
+        if (nums.length < 2) return nums[0];
+        
+        int currentMoney = -1, neighborMoney = -1;
         for (int i = nums.length - 1; i >= 0; i--) {
+            int skipNeighborMoney = neighborMoney;
+            neighborMoney = currentMoney;
             if (i + 2 < nums.length) {
-                money[i] = Math.max(money[i + 1], nums[i] + money[i + 2]);
+                currentMoney = Math.max(neighborMoney, nums[i] + skipNeighborMoney);
             } else if (i + 1 < nums.length) {
-                money[i] = Math.max(nums[i], nums[i + 1]);
+                currentMoney = Math.max(nums[i], neighborMoney);
             } else {
-                money[i] = nums[i];
+                currentMoney = nums[i];
             }
         }
-        return nums.length > 1 ? Math.max(money[0], money[1]) : money[0];
+        
+        return Math.max(currentMoney, neighborMoney);
     }
 }
