@@ -1,20 +1,23 @@
 class Solution {
+    // O(n) time | O(1) space
     public int rob(int[] nums) {
         if (nums.length == 1) return nums[0];
         return Math.max(rob(nums, 0, nums.length - 2), rob(nums, 1, nums.length - 1));
     }
     
     private int rob(int[] nums, int start, int end) {
-        int[] money = new int[end - start + 1];
+        int currentMoney = Integer.MIN_VALUE, neighborMoney = Integer.MIN_VALUE;
         for (int i = end; i >= start; i--) {
+            int skipNeighborMoney = neighborMoney;
+            neighborMoney = currentMoney;
             if (i == end) {
-                money[i - start] = nums[i];
+                currentMoney = nums[i];
             } else if (i == end - 1) {
-                money[i - start] = Math.max(nums[i], nums[i + 1]);
+                currentMoney = Math.max(nums[i], neighborMoney);
             } else {
-                money[i - start] = Math.max(nums[i] + money[i - start + 2], money[i - start + 1]);
+                currentMoney = Math.max(nums[i] + skipNeighborMoney, neighborMoney);
             }
         }
-        return end - start > 0 ? Math.max(money[0], money[1]) : money[0];
+        return Math.max(currentMoney, neighborMoney);
     }
 }
