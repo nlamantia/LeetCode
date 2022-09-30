@@ -1,4 +1,5 @@
 class Solution {
+    // O(n) time | O(n) space
     public List<List<Integer>> largeGroupPositions(String s) {
         List<List<Integer>> groups = new LinkedList<>();
         if (s == null || s.length() < 3) return groups;
