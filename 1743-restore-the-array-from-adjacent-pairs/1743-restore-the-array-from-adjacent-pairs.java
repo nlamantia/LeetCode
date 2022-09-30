@@ -18,6 +18,8 @@ class Solution {
                 dfs(entry.getKey(), 0, new HashSet<>());
             }
         }
+        adj = null;
+        
         return nums;
     }
     
