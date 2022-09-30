@@ -1,5 +1,5 @@
 class Solution {
-    // O(n^2) time | O(n) space
+    // O(n^2) time | O(1) space
     public int numberOfArithmeticSlices(int[] nums) {
         if (nums == null || nums.length <= 2) return 0;
         
