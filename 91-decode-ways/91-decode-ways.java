@@ -1,22 +1,21 @@
 class Solution {
+    // O(n) time | O(1) space
     public int numDecodings(String s) {
-        int[] ways = new int[s.length()];
-        if (s.charAt(s.length() - 1) != '0') {
-            ways[s.length() - 1] = 1;
-        }
+        int current = s.charAt(s.length() - 1) == '0' ? 0 : 1;
+        int next = 1;
         
         for (int i = s.length() - 2; i >= 0; i--) {
+            int temp = current;
             if (s.charAt(i) == '0') {
-                continue;
-            } 
-            
-            ways[i] += ways[i + 1];
-            if (canBeDoubleDigit(s, i)) {
-                ways[i] += i < s.length() - 2 ? ways[i + 2] : 1;
+                current = 0;
+            } else if (canBeDoubleDigit(s, i)) {
+                current += next;
             }
+            
+            next = temp;
         }
         
-        return ways[0];
+        return current;
     }
     
     private boolean canBeDoubleDigit(String s, int i) {
