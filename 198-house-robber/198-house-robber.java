@@ -1,4 +1,5 @@
 class Solution {
+    // O(n) time | O(1) space
     public int rob(int[] nums) {
         if (nums.length < 2) return nums[0];
         
