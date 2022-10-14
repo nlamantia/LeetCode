@@ -1,4 +1,5 @@
 class Solution {
+    // O(n) time | O(1) space
     public int maxProfit(int[] prices) {
         int buy = 0, sell = 0;
         int maxProfit = 0;
