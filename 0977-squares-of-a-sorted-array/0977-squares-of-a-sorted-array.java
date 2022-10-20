@@ -1,5 +1,5 @@
 class Solution {
-    // 
+    // O(n) time | O(n) space
     public int[] sortedSquares(int[] nums) {
         int[] squares = new int[nums.length];
         int i = nums.length - 1;
