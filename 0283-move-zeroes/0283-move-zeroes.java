@@ -1,4 +1,5 @@
 class Solution {
+    // O(n) time | O(1) space
     public void moveZeroes(int[] nums) {
         int z = 0, nz = 0;
         while (z < nums.length && nz < nums.length) {
