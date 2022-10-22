@@ -14,7 +14,6 @@ class Solution {
         } else {
             int[] newDigits = new int[digits.length + 1];
             newDigits[0] = carry;
-            System.arraycopy(digits, 0, newDigits, 1, digits.length);
             return newDigits;
         }
     }
