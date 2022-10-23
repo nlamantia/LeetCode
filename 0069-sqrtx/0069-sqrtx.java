@@ -1,4 +1,5 @@
 class Solution {
+    // O(log x) time | O(1) space
     public int mySqrt(int x) {
         if (x < 2) return x;
         
