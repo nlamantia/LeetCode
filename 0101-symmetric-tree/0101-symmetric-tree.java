@@ -16,29 +16,28 @@
 class Solution {
     public boolean isSymmetric(TreeNode root) {
         if (root == null) return true;
-        
-        List<TreeNode> level = new ArrayList<>();
-        level.add(root);
-        
-        while (!level.isEmpty()) {
-            // compare level
-            int levelSize = level.size();
-            int start = 0, end = level.size() - 1;
-            while (start < end) {
-                if (!isSameNode(level.get(start++), level.get(end--))) {
-                    return false;
-                }
-            }
-            
-            for (int i = 0; i < levelSize; i++) {
-                TreeNode node = level.remove(0);
-                if (node != null) {
-                    level.add(node.left);
-                    level.add(node.right);
-                }
-            }
+        invertTree(root.right);
+        return isSameTree(root.left, root.right);
+    }
+    
+    private boolean isSameTree(TreeNode root1, TreeNode root2) {
+        boolean result = true;
+        if (root1 != null && root2 != null) {
+            result &= isSameTree(root1.left, root2.left) && isSameTree(root1.right, root2.right);
         }
-        return true;
+        
+        return result && isSameNode(root1, root2);
+    }
+    
+    private void invertTree(TreeNode root) {
+        if (root != null) {
+            invertTree(root.left);
+            invertTree(root.right);
+            
+            TreeNode tmp = root.left;
+            root.left = root.right;
+            root.right = tmp;
+        }
     }
     
     private boolean isSameNode(TreeNode n1, TreeNode n2) {
