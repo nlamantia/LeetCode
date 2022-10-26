@@ -20,7 +20,6 @@ public class Solution {
                 a = a.next;
             }
             
-            
             if (b != null) {
                 if (visited.contains(b)) return b;
                 visited.add(b);
