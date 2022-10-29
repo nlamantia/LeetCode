@@ -9,6 +9,7 @@
  * }
  */
 class Solution {
+    // O(n) time | O(1) space
     public boolean isPalindrome(ListNode head) {
         // find middle
         ListNode middle = head, end = head;
