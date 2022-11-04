@@ -1,5 +1,5 @@
 class Solution {
-    // O(n log n) time | O(n) space
+    // O(n + (k log k)) time | O(n + k) space
     public int[] topKFrequent(int[] nums, int k) {
         if (k >= nums.length) return nums;
         
@@ -9,11 +9,16 @@ class Solution {
         }
         
         PriorityQueue<Map.Entry<Integer, Integer>> heap = new PriorityQueue<>(
-            Comparator.comparing(Map.Entry<Integer, Integer>::getValue).reversed()
+            Comparator.comparing(Map.Entry<Integer, Integer>::getValue)
         );
         
         for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
-            heap.offer(entry);
+            if (heap.size() < k) {
+                heap.offer(entry);
+            } else if (heap.peek().getValue() < entry.getValue()) {
+                heap.poll();
+                heap.offer(entry);
+            }
         }
         
         int[] res = new int[k];
