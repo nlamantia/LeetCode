@@ -1,28 +1,24 @@
 class Solution {
-    // O(n) time | O(n) space
+    // O(n log n) time | O(n) space
     public String frequencySort(String s) {
-        Map<Character, Integer> freqMap = new HashMap<>();
+        Map<Character, Integer> charFreqMap = new HashMap<>();
         for (char c : s.toCharArray()) {
-            freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
+            charFreqMap.put(c, charFreqMap.getOrDefault(c, 0) + 1);
         }
         
-        StringBuffer[] buckets = new StringBuffer[s.length() + 1];
-        for (char c : freqMap.keySet()) {
-            int freq = freqMap.get(c);
-            if (buckets[freq] == null) {
-                buckets[freq] = new StringBuffer();
-            }
-            
+        TreeMap<Integer, StringBuilder> buckets = new TreeMap<>(Comparator.reverseOrder());
+        for (char c : charFreqMap.keySet()) {
+            int freq = charFreqMap.get(c);
+            StringBuilder buffer = buckets.getOrDefault(freq, new StringBuilder());
             for (int i = 0; i < freq; i++) {
-                buckets[freq].append(c);
+                buffer.append(c);
             }
+            buckets.put(freq, buffer);
         }
         
         StringBuilder sb = new StringBuilder();
-        for (int i = buckets.length - 1; i >= 0; i--) {
-            if (buckets[i] != null) {
-                sb.append(buckets[i]);
-            }
+        while (!buckets.isEmpty()) {
+            sb.append(buckets.pollFirstEntry().getValue());
         }
         return sb.toString();
     }
