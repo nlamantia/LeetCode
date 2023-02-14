@@ -10,7 +10,7 @@ class Solution {
         }
         
         if (carry == 1) {
-            result.insert(0, 1);
+            result.insert(0, carry);
         }
         
         return result.toString();
