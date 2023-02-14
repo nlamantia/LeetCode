@@ -2,15 +2,11 @@ class Solution {
     public String addBinary(String a, String b) {
         StringBuilder result = new StringBuilder();
         int carry = 0;
-        int i = a.length() - 1, j = b.length() - 1;
-        while (i >= 0 || j >= 0) {
+        for (int i = a.length() - 1, j = b.length() - 1; i >= 0 || j >= 0; i--, j--) {
             int digit1 = digit(a, i);
             int digit2 = digit(b, j);
-            int nextDigit = carry ^ digit1 ^ digit2;
-            result.insert(0, nextDigit);
+            result.insert(0, carry ^ digit1 ^ digit2);
             carry = (carry & digit1) | (digit1 & digit2) | (carry & digit2);
-            i--;
-            j--;
         }
         
         if (carry == 1) {
