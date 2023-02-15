@@ -1,6 +1,6 @@
 class Solution {
     public List<Integer> addToArrayForm(int[] num, int k) {
-        List<Integer> result = new ArrayList<>();
+        LinkedList<Integer> result = new LinkedList<>();
         
         int carry = 0;
         int i = num.length - 1;
@@ -8,14 +8,14 @@ class Solution {
             int nextNumDigit = i >= 0 ? num[i] : 0;
             int nextKDigit = k % 10;
             int digitSum = carry + nextNumDigit + nextKDigit;
-            result.add(0, digitSum % 10);
+            result.addFirst(digitSum % 10);
             carry = digitSum / 10;
             k /= 10;
             i--;
         }
         
         if (carry > 0) {
-            result.add(0, carry);
+            result.addFirst(carry);
         }
         
         return result;
